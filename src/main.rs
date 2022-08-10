@@ -159,7 +159,13 @@ allegro_main! {
     queue.register_event_source(core.get_keyboard_event_source().unwrap());
 
     draw_maze(&core, &mut display, &buffer, buffer_w, buffer_h, &sprites, &maze);
-    maze_rs::algorithms::recursive_backtracking::recursive_backtracking(
+    //maze_rs::algorithms::recursive_backtracking::recursive_backtracking(
+    //    &mut maze, &mut rand,
+    //    &mut |maze: &mut Maze| {
+    //        update_maze_display(&core, &mut display, &buffer, buffer_w, buffer_h, &queue, &sprites, maze);
+    //    }
+    //);
+    maze_rs::algorithms::eller::eller(
         &mut maze, &mut rand,
         &mut |maze: &mut Maze| {
             update_maze_display(&core, &mut display, &buffer, buffer_w, buffer_h, &queue, &sprites, maze);

@@ -13,7 +13,7 @@ impl Random {
         Random {rng: thread_rng()}
     }
 
-    fn rand_usize(&mut self, lo: usize, hi: usize) -> usize {
+    pub fn rand_usize(&mut self, lo: usize, hi: usize) -> usize {
         let r: f64 = self.rng.gen();
         (r * ((hi - lo) as f64)) as usize + lo
     }

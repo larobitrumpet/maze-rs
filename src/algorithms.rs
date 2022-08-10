@@ -1,4 +1,5 @@
 pub mod recursive_backtracking;
+pub mod eller;
 
 use crate::random::Random;
 use crate::point::Direction;
