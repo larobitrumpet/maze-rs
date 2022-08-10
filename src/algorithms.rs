@@ -1,6 +1,9 @@
 pub mod recursive_backtracking;
 pub mod eller;
 
+pub use recursive_backtracking::recursive_backtracking;
+pub use eller::eller;
+
 use crate::random::Random;
 use crate::point::Direction;
 use crate::point::Direction::*;
