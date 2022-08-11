@@ -102,4 +102,6 @@ pub fn eller<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
     }
 
     eller_last_row(maze, &mut row, maze.height() - 1, call_back);
+
+    maze.set_pos(None);
 }
