@@ -34,12 +34,13 @@ pub fn get_algorithm() -> u32 {
     println!("  2: Kruskal's Algorithm");
     println!("  3: Prim's Algorithm");
     println!("  4: Recursive Division");
+    println!("  5: Aldous-Broder");
     loop {
         let num: u32 = get_int("Enter maze number: ");
-        if num < 5 {
+        if num < 6 {
             return num;
         } else {
-            println!("Please enter a valid maze number (a number between 0 and 4)");
+            println!("Please enter a valid maze number (a number between 0 and 5)");
             continue;
         }
     }

@@ -3,12 +3,14 @@ mod eller;
 mod kruskal;
 mod prim;
 mod recursive_division;
+mod aldous_broder;
 
 pub use recursive_backtracking::recursive_backtracking;
 pub use eller::eller;
 pub use kruskal::kruskal;
 pub use prim::prim;
 pub use recursive_division::recursive_division;
+pub use aldous_broder::aldous_broder;
 
 use crate::random::Random;
 use crate::point::Direction;
