@@ -137,18 +137,22 @@ allegro_main! {
 
     let sprites = Sprites::init(&core);
     let (width, height) = maze_rs::user_input::get_dimentions();
-    let mut maze = Maze::new(width, height, false);
-    let buffer_w: usize = maze.width() * sprites.tile_w();
-    let buffer_h: usize = maze.height() * sprites.tile_h();
+    let buffer_w: usize = width * sprites.tile_w();
+    let buffer_h: usize = height * sprites.tile_h();
     let mut rand = Random::new();
 
-    let algorithm = match maze_rs::user_input::get_algorithm() {
+    let algorithm = maze_rs::user_input::get_algorithm();
+    let wall_adder = algorithm == 4;
+    let algorithm = match algorithm {
         0 => maze_rs::algorithms::recursive_backtracking,
         1 => maze_rs::algorithms::eller,
         2 => maze_rs::algorithms::kruskal,
         3 => maze_rs::algorithms::prim,
+        4 => maze_rs::algorithms::recursive_division,
         _ => panic!("This should be unreachable."),
     };
+
+    let mut maze = Maze::new(width, height, wall_adder);
 
     let mut display = Display::new(&core, 800, 600).unwrap();
     let buffer = Bitmap::new(&core, buffer_w as i32, buffer_h as i32).unwrap();

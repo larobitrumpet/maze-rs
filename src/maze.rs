@@ -43,7 +43,7 @@ impl Maze {
         if wall_adder {
             maze.cells[0] = 0b0000_0110;
             maze.cells[width - 1] = 0b0000_1100;
-            maze.cells[(width - 1) * width] = 0b0000_0011;
+            maze.cells[(height - 1) * width] = 0b0000_0011;
             maze.cells[height * width - 1] = 0b0000_1001;
             for x in 1..(width - 1) {
                 maze.cells[x] = 0b0000_1110;
