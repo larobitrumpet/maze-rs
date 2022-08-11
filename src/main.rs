@@ -136,10 +136,18 @@ allegro_main! {
     let _image = ImageAddon::init(&core).unwrap();
 
     let sprites = Sprites::init(&core);
-    let mut maze = Maze::new(64, 32, false);
+    let (width, height) = maze_rs::user_input::get_dimentions();
+    let mut maze = Maze::new(width, height, false);
     let buffer_w: usize = maze.width() * sprites.tile_w();
     let buffer_h: usize = maze.height() * sprites.tile_h();
     let mut rand = Random::new();
+
+    let algorithm = match maze_rs::user_input::get_algorithm() {
+        0 => maze_rs::algorithms::recursive_backtracking,
+        1 => maze_rs::algorithms::eller,
+        2 => maze_rs::algorithms::kruskal,
+        _ => panic!("This should be unreachable."),
+    };
 
     let mut display = Display::new(&core, 800, 600).unwrap();
     let buffer = Bitmap::new(&core, buffer_w as i32, buffer_h as i32).unwrap();
@@ -159,19 +167,8 @@ allegro_main! {
     queue.register_event_source(core.get_keyboard_event_source().unwrap());
 
     draw_maze(&core, &mut display, &buffer, buffer_w, buffer_h, &sprites, &maze);
-    //maze_rs::algorithms::recursive_backtracking(
-    //    &mut maze, &mut rand,
-    //    &mut |maze: &mut Maze| {
-    //        update_maze_display(&core, &mut display, &buffer, buffer_w, buffer_h, &queue, &sprites, maze);
-    //    }
-    //);
-    //maze_rs::algorithms::eller(
-    //    &mut maze, &mut rand,
-    //    &mut |maze: &mut Maze| {
-    //        update_maze_display(&core, &mut display, &buffer, buffer_w, buffer_h, &queue, &sprites, maze);
-    //    }
-    //);
-    maze_rs::algorithms::kruskal(
+
+    algorithm(
         &mut maze, &mut rand,
         &mut |maze: &mut Maze| {
             update_maze_display(&core, &mut display, &buffer, buffer_w, buffer_h, &queue, &sprites, maze);
