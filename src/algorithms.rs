@@ -1,10 +1,12 @@
 mod recursive_backtracking;
 mod eller;
 mod kruskal;
+mod prim;
 
 pub use recursive_backtracking::recursive_backtracking;
 pub use eller::eller;
 pub use kruskal::kruskal;
+pub use prim::prim;
 
 use crate::random::Random;
 use crate::point::Direction;
@@ -28,13 +30,13 @@ impl RandomDirection {
     }
 }
 
-fn unvisited_neighbor<F>(rand: &mut Random, maze: &mut Maze, p: Point, once: bool, f: &mut F) -> ()
+fn valid_neighbors<F>(rand: &mut Random, maze: &mut Maze, p: Point, visited: bool, once: bool, f: &mut F) -> ()
     where F: FnMut(&mut Maze, Point, Point, Direction, &mut Random) -> () {
     let dirs = RandomDirection::new(rand);
     for &i in dirs.dirs().iter() {
         let p_new = p.point_in_direction(i, maze.width(), maze.height());
         if let Ok(p_new) = p_new {
-            if !maze.get_visited(p_new) {
+            if maze.get_visited(p_new) == visited {
                 f(maze, p, p_new, i, rand);
                 if once {
                     return;

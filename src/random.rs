@@ -4,6 +4,8 @@ use rand::rngs::ThreadRng;
 use rand::thread_rng;
 use rand::Rng;
 
+use crate::point::Point;
+
 pub struct Random {
     rng: ThreadRng,
 }
@@ -16,6 +18,10 @@ impl Random {
     pub fn rand_usize(&mut self, lo: usize, hi: usize) -> usize {
         let r: f64 = self.rng.gen();
         (r * ((hi - lo) as f64)) as usize + lo
+    }
+
+    pub fn rand_point(&mut self, width: usize, height: usize) -> Point {
+        Point::new(self.rand_usize(0, width), self.rand_usize(0, height))
     }
 
     pub fn shuffle<T: Copy>(&mut self, v: &mut Vec<T>) {

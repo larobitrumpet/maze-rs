@@ -146,6 +146,7 @@ allegro_main! {
         0 => maze_rs::algorithms::recursive_backtracking,
         1 => maze_rs::algorithms::eller,
         2 => maze_rs::algorithms::kruskal,
+        3 => maze_rs::algorithms::prim,
         _ => panic!("This should be unreachable."),
     };
 

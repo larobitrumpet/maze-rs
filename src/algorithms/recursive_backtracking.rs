@@ -9,8 +9,8 @@ fn carve_passage_from<F>(maze: &mut Maze, p: Point, rand: &mut Random, call_back
     maze.set_special(p);
     maze.set_visited(p);
     call_back(maze);
-    super::unvisited_neighbor(
-        rand, maze, p, false,
+    super::valid_neighbors(
+        rand, maze, p, false, false,
         &mut |maze: &mut Maze, p: Point, p_new: Point, dir: Direction, rand: &mut Random| {
             maze.carve_passage(dir);
             carve_passage_from(maze, p_new, rand, call_back);
