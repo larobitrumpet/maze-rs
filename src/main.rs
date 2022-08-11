@@ -165,7 +165,13 @@ allegro_main! {
     //        update_maze_display(&core, &mut display, &buffer, buffer_w, buffer_h, &queue, &sprites, maze);
     //    }
     //);
-    maze_rs::algorithms::eller(
+    //maze_rs::algorithms::eller(
+    //    &mut maze, &mut rand,
+    //    &mut |maze: &mut Maze| {
+    //        update_maze_display(&core, &mut display, &buffer, buffer_w, buffer_h, &queue, &sprites, maze);
+    //    }
+    //);
+    maze_rs::algorithms::kruskal(
         &mut maze, &mut rand,
         &mut |maze: &mut Maze| {
             update_maze_display(&core, &mut display, &buffer, buffer_w, buffer_h, &queue, &sprites, maze);

@@ -1,8 +1,10 @@
-pub mod recursive_backtracking;
-pub mod eller;
+mod recursive_backtracking;
+mod eller;
+mod kruskal;
 
 pub use recursive_backtracking::recursive_backtracking;
 pub use eller::eller;
+pub use kruskal::kruskal;
 
 use crate::random::Random;
 use crate::point::Direction;

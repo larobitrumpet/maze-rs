@@ -1,4 +1,4 @@
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Direction {
     Up,
     Right,
@@ -29,7 +29,7 @@ impl Direction {
 
 }
 
-#[derive(Copy, Clone, PartialEq, Debug)]
+#[derive(Copy, Clone, PartialEq, Eq, Hash, Debug)]
 pub struct Point {
     x: usize,
     y: usize,
