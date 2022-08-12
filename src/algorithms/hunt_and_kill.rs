@@ -22,9 +22,9 @@ fn hunt_and_kill_walk<F>(maze: &mut Maze, rand: &mut Random, start: Point, call_
     }
 }
 
-fn hunt_and_kill_hunt<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> Option<Point>
+fn hunt_and_kill_hunt<F>(maze: &mut Maze, rand: &mut Random, start: Point, call_back: &mut F) -> Option<Point>
     where F: FnMut(&mut Maze) -> () {
-    let mut p = Point::new(0, 0);
+    let mut p = start;
     let p_ptr = &mut p;
     maze.set_pos(Some(*p_ptr));
     let mut new_start: Option<Point> = None;
@@ -61,11 +61,30 @@ fn hunt_and_kill_hunt<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) 
 pub fn hunt_and_kill<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> (){
     let mut p: Point = rand.rand_point(maze.width(), maze.height());
+    let mut start: Option<Point> = None;
     loop {
         hunt_and_kill_walk(maze, rand, p, call_back);
-        let new_p = hunt_and_kill_hunt(maze, rand, call_back);
+        let new_p = hunt_and_kill_hunt(
+            maze, rand,
+            match start {
+                Some(s) => s,
+                None => Point::new(0, 0),
+            },
+            call_back);
         match new_p {
-            Some(new_p) => p = new_p,
+            Some(new_p) => {
+                p = new_p;
+                match start {
+                    Some(_) => {
+                        start = p.next(maze.width(), maze.height());
+                    },
+                    None => {
+                        if maze.get_visited(Point::new(0, 0)) {
+                            start = Some(Point::new(0, 0));
+                        }
+                    },
+                }
+            },
             None => break,
         }
     }
