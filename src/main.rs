@@ -151,6 +151,7 @@ allegro_main! {
         4 => maze_rs::algorithms::recursive_division,
         5 => maze_rs::algorithms::aldous_broder,
         6 => maze_rs::algorithms::wilson,
+        7 => maze_rs::algorithms::hunt_and_kill,
         _ => panic!("This should be unreachable."),
     };
 

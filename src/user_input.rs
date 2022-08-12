@@ -36,12 +36,13 @@ pub fn get_algorithm() -> u32 {
     println!("  4: Recursive Division");
     println!("  5: Aldous-Broder");
     println!("  6: Wilson's Algorithm");
+    println!("  7: Hunt and Kill");
     loop {
         let num: u32 = get_int("Enter maze number: ");
-        if num < 7 {
+        if num < 8 {
             return num;
         } else {
-            println!("Please enter a valid maze number (a number between 0 and 6)");
+            println!("Please enter a valid maze number (a number between 0 and 7)");
             continue;
         }
     }

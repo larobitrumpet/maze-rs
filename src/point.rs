@@ -80,4 +80,16 @@ impl Point {
             },
         }
     }
+
+    pub fn next(&self, width: usize, height: usize) -> Option<Point> {
+        let x = self.x();
+        let y = self.y();
+        if x + 1 < width {
+            Some(Self::new(x + 1, y))
+        } else if y + 1 < height {
+            Some(Self::new(0, y + 1))
+        } else {
+            None
+        }
+    }
 }

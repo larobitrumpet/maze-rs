@@ -5,6 +5,7 @@ mod prim;
 mod recursive_division;
 mod aldous_broder;
 mod wilson;
+mod hunt_and_kill;
 
 pub use recursive_backtracking::recursive_backtracking;
 pub use eller::eller;
@@ -13,6 +14,7 @@ pub use prim::prim;
 pub use recursive_division::recursive_division;
 pub use aldous_broder::aldous_broder;
 pub use wilson::wilson;
+pub use hunt_and_kill::hunt_and_kill;
 
 use crate::random::Random;
 use crate::point::Direction;
@@ -36,7 +38,7 @@ impl RandomDirection {
     }
 }
 
-fn valid_neighbors<F>(rand: &mut Random, maze: &mut Maze, p: Point, visited: bool, once: bool, f: &mut F) -> ()
+fn valid_neighbors<F>(rand: &mut Random, maze: &mut Maze, p: Point, visited: bool, once: bool, f: &mut F) -> bool
     where F: FnMut(&mut Maze, Point, Point, Direction, &mut Random) -> () {
     let dirs = RandomDirection::new(rand);
     for &i in dirs.dirs().iter() {
@@ -45,9 +47,10 @@ fn valid_neighbors<F>(rand: &mut Random, maze: &mut Maze, p: Point, visited: boo
             if maze.get_visited(p_new) == visited {
                 f(maze, p, p_new, i, rand);
                 if once {
-                    return;
+                    return true;
                 }
             }
         }
     }
+    false
 }
