@@ -150,6 +150,7 @@ allegro_main! {
         3 => maze_rs::algorithms::prim,
         4 => maze_rs::algorithms::recursive_division,
         5 => maze_rs::algorithms::aldous_broder,
+        6 => maze_rs::algorithms::wilson,
         _ => panic!("This should be unreachable."),
     };
 
