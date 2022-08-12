@@ -60,7 +60,7 @@ fn hunt_and_kill_hunt<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) 
 
 pub fn hunt_and_kill<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> (){
-    let mut p: Point = Point::new(0, 0);
+    let mut p: Point = rand.rand_point(maze.width(), maze.height());
     loop {
         hunt_and_kill_walk(maze, rand, p, call_back);
         let new_p = hunt_and_kill_hunt(maze, rand, call_back);
