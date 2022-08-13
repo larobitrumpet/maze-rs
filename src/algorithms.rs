@@ -7,6 +7,7 @@ mod aldous_broder;
 mod wilson;
 mod hunt_and_kill;
 mod growing_tree;
+mod binary_tree;
 
 pub use recursive_backtracking::recursive_backtracking;
 pub use eller::eller;
@@ -17,6 +18,7 @@ pub use aldous_broder::aldous_broder;
 pub use wilson::wilson;
 pub use hunt_and_kill::hunt_and_kill;
 pub use growing_tree::growing_tree;
+pub use binary_tree::binary_tree;
 
 use crate::random::Random;
 use crate::point::Direction;

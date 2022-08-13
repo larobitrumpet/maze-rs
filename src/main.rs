@@ -158,6 +158,7 @@ allegro_main! {
         6 => maze_rs::algorithms::wilson,
         7 => maze_rs::algorithms::hunt_and_kill,
         8 => maze_rs::algorithms::growing_tree,
+        9 => maze_rs::algorithms::binary_tree,
         _ => panic!("This should be unreachable."),
     };
 
