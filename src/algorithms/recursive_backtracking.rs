@@ -21,7 +21,7 @@ fn carve_passage_from<F>(maze: &mut Maze, p: Point, rand: &mut Random, call_back
     maze.clear_special(p);
 }
 
-pub fn recursive_backtracking<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
+pub fn recursive_backtracking<F>(maze: &mut Maze, rand: &mut Random, _weights: Vec<u32>, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> () {
     carve_passage_from(maze, rand.rand_point(maze.width(), maze.height()), rand, call_back);
     maze.set_pos(None);

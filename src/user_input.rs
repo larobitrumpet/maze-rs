@@ -37,13 +37,30 @@ pub fn get_algorithm() -> u32 {
     println!("  5: Aldous-Broder");
     println!("  6: Wilson's Algorithm");
     println!("  7: Hunt and Kill");
+    println!("  8: Growing Tree");
     loop {
         let num: u32 = get_int("Enter maze number: ");
-        if num < 8 {
+        if num < 9 {
             return num;
         } else {
-            println!("Please enter a valid maze number (a number between 0 and 7)");
+            println!("Please enter a valid maze number (a number between 0 and 8)");
             continue;
         }
     }
+}
+
+pub fn get_weights() -> Vec<u32> {
+    println!("Growing Tree can randomly choose how it gets cells:");
+    println!("  Newest\n  Random\n  Middle\n  Oldest");
+    println!("Select weights for these different methods.");
+    println!("To select only one method, give a weight of 1 to that");
+    println!("method and a weight of 0 to all other methods.");
+    let mut weights = vec![];
+    weights.push(get_int("  Newest: "));
+    weights.push(get_int("  Random: "));
+    weights.push(get_int("  Oldest: "));
+    weights.push(get_int("  Middle: "));
+    weights.push(weights[0] + weights[1] + weights[2] + weights[3]);
+
+    weights
 }

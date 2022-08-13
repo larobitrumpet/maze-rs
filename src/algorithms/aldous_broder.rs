@@ -1,7 +1,7 @@
 use crate::random::Random;
 use crate::maze::Maze;
 
-pub fn aldous_broder<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
+pub fn aldous_broder<F>(maze: &mut Maze, rand: &mut Random, _weights: Vec<u32>, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> () {
     let mut remaining: usize = maze.width() * maze.height();
     let mut p = rand.rand_point(maze.width(), maze.height());

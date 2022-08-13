@@ -39,7 +39,7 @@ fn join_to_maze(maze: &mut Maze, rand: &mut Random, p: Point) {
     );
 }
 
-pub fn prim<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
+pub fn prim<F>(maze: &mut Maze, rand: &mut Random, _weights: Vec<u32>, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> () {
     let mut frontier: Vec<Point> = vec![];
     let p = rand.rand_point(maze.width(), maze.height());

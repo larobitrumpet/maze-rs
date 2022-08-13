@@ -33,4 +33,28 @@ impl Random {
             v[i] = temp;
         }
     }
+
+    /// Returns a random value based on weights.
+    ///
+    /// `v` is a vector of weights and the last
+    /// element is the sum of the weights.
+    pub fn rand_weights(&mut self, v: &Vec<u32>) -> usize {
+        if v[v.len() - 1] == 1 {
+            for (index, &value) in v.iter().enumerate() {
+                if value == 1 {
+                    return index
+                }
+            }
+        }
+        let r = self.rand_usize(0, v[v.len() - 1] as usize);
+        let mut sum = 0;
+        for (index, value) in v[..(v.len() - 2)].iter().enumerate() {
+            if r < (value + sum) as usize {
+                return index;
+            }
+            sum += value;
+        }
+
+        v.len() - 2 as usize
+    }
 }

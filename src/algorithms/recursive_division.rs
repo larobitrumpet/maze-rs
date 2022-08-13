@@ -59,7 +59,7 @@ fn divide<F>(maze: &mut Maze, rand: &mut Random, p: Point, width: usize, height:
     }
 }
 
-pub fn recursive_division<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
+pub fn recursive_division<F>(maze: &mut Maze, rand: &mut Random, _weights: Vec<u32>, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> () {
     divide(maze, rand, Point::new(0, 0), maze.width(), maze.height(), call_back);
     maze.set_pos(None);

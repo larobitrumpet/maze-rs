@@ -87,7 +87,7 @@ fn eller_last_row<F>(maze: &mut Maze, row: &mut Vec<u32>, y: usize, call_back: &
     }
 }
 
-pub fn eller<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
+pub fn eller<F>(maze: &mut Maze, rand: &mut Random, _weights: Vec<u32>, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> () {
     let mut set_num = 1;
     let mut row: Vec<u32> = vec![0; maze.width()];

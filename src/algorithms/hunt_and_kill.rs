@@ -58,7 +58,7 @@ fn hunt_and_kill_hunt<F>(maze: &mut Maze, rand: &mut Random, start: Point, call_
     new_start
 }
 
-pub fn hunt_and_kill<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
+pub fn hunt_and_kill<F>(maze: &mut Maze, rand: &mut Random, _weights: Vec<u32>, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> (){
     let mut p: Point = rand.rand_point(maze.width(), maze.height());
     let mut start: Option<Point> = None;

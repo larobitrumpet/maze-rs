@@ -95,7 +95,7 @@ impl WilsonPath {
     }
 }
 
-pub fn wilson<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
+pub fn wilson<F>(maze: &mut Maze, rand: &mut Random, _weights: Vec<u32>, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> () {
     let mut not_in_maze: Vec<Point> = Vec::with_capacity(maze.width() * maze.height());
     for y in 0..maze.height() {

@@ -143,6 +143,11 @@ allegro_main! {
 
     let algorithm = maze_rs::user_input::get_algorithm();
     let wall_adder = algorithm == 4;
+    let weights = if algorithm == 8 {
+        maze_rs::user_input::get_weights()
+    } else {
+        vec![]
+    };
     let algorithm = match algorithm {
         0 => maze_rs::algorithms::recursive_backtracking,
         1 => maze_rs::algorithms::eller,
@@ -152,6 +157,7 @@ allegro_main! {
         5 => maze_rs::algorithms::aldous_broder,
         6 => maze_rs::algorithms::wilson,
         7 => maze_rs::algorithms::hunt_and_kill,
+        8 => maze_rs::algorithms::growing_tree,
         _ => panic!("This should be unreachable."),
     };
 
@@ -177,7 +183,7 @@ allegro_main! {
     draw_maze(&core, &mut display, &buffer, buffer_w, buffer_h, &sprites, &maze);
 
     algorithm(
-        &mut maze, &mut rand,
+        &mut maze, &mut rand, weights,
         &mut |maze: &mut Maze| {
             update_maze_display(&core, &mut display, &buffer, buffer_w, buffer_h, &queue, &sprites, maze);
         }

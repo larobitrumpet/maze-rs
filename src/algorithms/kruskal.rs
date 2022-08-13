@@ -117,7 +117,7 @@ fn kruskal_init(maze: &mut Maze, rand: &mut Random) -> (Arena<Point>, HashMap<Po
     (arena, point_nodes, edges)
 }
 
-pub fn kruskal<F>(maze: &mut Maze, rand: &mut Random, call_back: &mut F) -> ()
+pub fn kruskal<F>(maze: &mut Maze, rand: &mut Random, _weights: Vec<u32>, call_back: &mut F) -> ()
     where F: FnMut(&mut Maze) -> () {
     let (mut arena, point_nodes, edges) = kruskal_init(maze, rand);
 
