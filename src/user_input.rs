@@ -39,12 +39,13 @@ pub fn get_algorithm() -> u32 {
     println!("  7: Hunt and Kill");
     println!("  8: Growing Tree");
     println!("  9: Binary Tree");
+    println!(" 10: Sidewinder");
     loop {
         let num: u32 = get_int("Enter maze number: ");
-        if num < 10 {
+        if num < 11 {
             return num;
         } else {
-            println!("Please enter a valid maze number (a number between 0 and 9)");
+            println!("Please enter a valid maze number (a number between 0 and 10)");
             continue;
         }
     }

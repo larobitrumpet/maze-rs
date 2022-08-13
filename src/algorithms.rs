@@ -8,6 +8,7 @@ mod wilson;
 mod hunt_and_kill;
 mod growing_tree;
 mod binary_tree;
+mod sidewinder;
 
 pub use recursive_backtracking::recursive_backtracking;
 pub use eller::eller;
@@ -19,6 +20,7 @@ pub use wilson::wilson;
 pub use hunt_and_kill::hunt_and_kill;
 pub use growing_tree::growing_tree;
 pub use binary_tree::binary_tree;
+pub use sidewinder::sidewinder;
 
 use crate::random::Random;
 use crate::point::Direction;
