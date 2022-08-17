@@ -6,6 +6,9 @@ fn get_input(prompt: &str) -> String {
     let _ = stdout().flush();
     stdin().read_line(&mut line).unwrap();
     line.pop();
+    if &line[(line.len() - 1)..] == "\r" {
+        line.pop();
+    }
     line
 }
 
